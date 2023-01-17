@@ -1,4 +1,8 @@
 .goods-window{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     display: flex;
     flex: 70% 0 0;
     flex-direction: row;

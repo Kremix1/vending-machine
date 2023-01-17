@@ -10,7 +10,6 @@ export const GoodsWindow = (props) => {
                 item.name == itemName ? { ...item, ['totalGoods']: item.totalGoods - 1} : item
             )
         );
-        console.log(props.shoppingCart)
     }
     return(
         <>

@@ -10,7 +10,6 @@ export const ControlPanel = (props) => {
     const analyzeMoney = () => {
         //Сюда валидация, если пользователя кончились
         setShortChange(props.money - props.shoppingCart)
-        console.log(shortChange)
     }
     const giveShortBack = () => {
         //Сюда валидация, если нет столько денег в автомате, сколько требуется, для сдачи
