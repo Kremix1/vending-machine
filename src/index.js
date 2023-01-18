@@ -7,7 +7,7 @@ import './index.css';
 
 const options = {
   position: positions.TOP_CENTER,
-  timeout: 3000,
+  timeout: 5000,
   offset: '30px',
   transition: transitions.SCALE,
 }

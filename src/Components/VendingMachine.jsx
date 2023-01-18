@@ -59,13 +59,13 @@ export const VendingMachine = (props) => {
     const [vendingMoney, setVendingMoney] = useState(2500);
     const [shoppingCart, setShoppingCart] = useState(0);
     let moneyNominals = {
-                    1000: 0,
-                    500: 6, 
-                    100: 7, 
-                    50: 8, 
-                    10: 10, 
-                    5: 0, 
-                    1: 0};
+                    1000: Math.random() * 20,
+                    500: Math.random() * 20, 
+                    100: Math.random() * 20, 
+                    50: Math.random() * 20, 
+                    10: Math.random() * 20, 
+                    5: Math.random() * 20, 
+                    1: Math.random() * 20};
     return(
         <>
         <div className='wrapper'>

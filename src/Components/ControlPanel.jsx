@@ -12,12 +12,11 @@ export const ControlPanel = (props) => {
     const shortChangeHandle = () => {
       setVisibility('control-panel__short-change')
       setCopy(Object.assign({}, analizedMoney))
-      let rez = 0;
+      let afterChange = 0;
       for (let key in analizedMoney){
-        rez += analizedMoney[key] * key
+        afterChange += analizedMoney[key] * key
       }
-      console.log(rez)
-      props.setUserMoney(0)
+      props.setUserMoney(props.userMoney - afterChange)
     }
     const analyzeMoney = (ammountRequired) => {
       if(props.userMoney == 0)
@@ -25,7 +24,7 @@ export const ControlPanel = (props) => {
       function collect(amount, nominals) {
         if (amount === 0) return {}; // Успех, но сдача = 0
         if (!nominals.length) {
-          alert.show('В автомате закончились деньги для сдачи, получите сдачу оставшимися деньгами.')
+          alert.show('В автомате закончились деньги для сдачи, получите сдачу оставшимися деньгами. \n\n И выберите продукты на остаток.')
           return {};
         }; // Неудача, сюда запихнуть продуктами
         let currentNominal = nominals[0];
