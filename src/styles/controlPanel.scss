@@ -34,8 +34,8 @@
     }
     &__short-change{
         width: 150px;
-        height: 40px;
-        background-color: #fff;
+        height: fit-content;
+        background-color: #aaa;
         line-height: 40px;
     }
     &__short-change-btn{
@@ -48,4 +48,17 @@
             cursor: pointer;
         }
     }
+}
+
+.short-change{
+    &__item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 25px;
+    }
+}
+
+.hidden{
+    display: none;
 }
