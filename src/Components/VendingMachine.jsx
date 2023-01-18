@@ -3,7 +3,7 @@ import '../styles/vendingMachine.scss'
 import { ControlPanel } from './ControlPanel';
 import { GoodsWindow } from './GoodsWindow';
 
-export const VendingMachine = () => {
+export const VendingMachine = (props) => {
     const [goods, setGoods] = useState([
         {
             name: 'Чипсы Pringles',
@@ -64,8 +64,8 @@ export const VendingMachine = () => {
                     100: 7, 
                     50: 8, 
                     10: 10, 
-                    5: 12, 
-                    1:10};
+                    5: 0, 
+                    1: 0};
     return(
         <>
         <div className='wrapper'>

@@ -1,16 +1,22 @@
 import {React, useState} from 'react';
+import { useAlert } from 'react-alert';
 import '../styles/controlPanel.scss';
 import { TotalMoney } from './controlPanel/TotalMoney';
 import { MoneyButton } from './controlPanel/MoneyButton';
 import { ShortChangeBtn } from './controlPanel/ShortChangeBtn';
 
 export const ControlPanel = (props) => {
+    const alert = useAlert();
     const [visibility, setVisibility] = useState('control-panel__short-change hidden');
-    const [copy, setCopy] = useState();
+    let [copy, setCopy] = useState();
     const shortChangeHandle = () => {
       setVisibility('control-panel__short-change')
-      setCopy(Object.assign({}, aboba))
-      console.log(copy)
+      setCopy(Object.assign({}, analizedMoney))
+      let rez = 0;
+      for (let key in analizedMoney){
+        rez += analizedMoney[key] * key
+      }
+      console.log(rez)
       props.setUserMoney(0)
     }
     const analyzeMoney = (ammountRequired) => {
@@ -18,7 +24,10 @@ export const ControlPanel = (props) => {
         return {}
       function collect(amount, nominals) {
         if (amount === 0) return {}; // Успех, но сдача = 0
-        if (!nominals.length) return {}; // Неудача, сюда запихнуть продуктами
+        if (!nominals.length) {
+          alert.show('В автомате закончились деньги для сдачи, получите сдачу оставшимися деньгами.')
+          return {};
+        }; // Неудача, сюда запихнуть продуктами
         let currentNominal = nominals[0];
         let avaiableNotes = props.moneyNominals[currentNominal];
         let notesNeeded = Math.floor(amount / currentNominal);
@@ -39,15 +48,17 @@ export const ControlPanel = (props) => {
         }
         
       }
-    
+      let products = Object.values(props.goods).map(item => item.price).sort((a,b) => b - a);
       let nominals = Object.keys(props.moneyNominals)
         .map(Number)
         .sort((a, b) => b - a);
       return collect(ammountRequired, nominals);
     };
-    let aboba = analyzeMoney(props.userMoney)
-    console.log(Object.entries(aboba))
-    console.log(props.userMoney)
+    let analizedMoney = analyzeMoney(props.userMoney)
+    let rez = 0;
+      for (let key in analizedMoney){
+        rez += analizedMoney[key] * key
+    }
     const moneyButtons = [50, 100, 500, 1000]
     return(
         <>
@@ -65,7 +76,7 @@ export const ControlPanel = (props) => {
                 <ShortChangeBtn shortChangeHandle={() => shortChangeHandle()}/>
                 <div className={visibility}>
                   {Object.entries(Object.assign({}, copy)).map(item =>
-                    <div className='short-change__item'>
+                    <div key={item} className='short-change__item'>
                       <div>{item[0]}</div>
                       <div>{item[1]}</div>
                     </div>
