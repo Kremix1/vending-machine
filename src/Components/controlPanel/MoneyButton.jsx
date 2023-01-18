@@ -1,15 +1,16 @@
 import {React} from 'react';
+import { useAlert } from 'react-alert';
 
 export const MoneyButton = (props) => {
+    const alert = useAlert()
     const addMoney = () => {
-        if(props.money + props.nominal > 5000){
-            alert('Вы ввели 5000, это максимальная сумма, закажите что-нибудь')
+        if(props.money + props.nominal > 3000){
+            alert.show('Вы ввели 3000, это максимальная сумма, закажите что-нибудь')
             //Максимальная сумма
             return;
         }
         props.setVisibility('control-panel__short-change hidden')
         props.setMoney(props.money + props.nominal)
-        //props.moneyNominals[props.nominal] = moneyNominals
         props.moneyNominals[props.nominal] += 1;
     }
     return(

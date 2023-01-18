@@ -1,19 +1,21 @@
 import {React} from 'react';
+import { useAlert } from 'react-alert';
 import '../styles/goodsWindow.scss';
 import { WindowItem } from './goodsWindow/windowItem';
 
 export const GoodsWindow = (props) => {
+    const alert = useAlert()
     const addToShoppingCart = (itemPrice, itemName) => {
         for(let i = 0; i < props.goods.length; i++){
             if(props.goods[i].name !== itemName)
                 continue;
             if(props.userMoney < itemPrice){
                 //Ошибка нехватки денег у пользователя
-                alert('Внесите необходимое количество рублей')
+                alert.show('Внесите необходимое количество рублей')
                 return;
             }
             if(props.goods[i].totalGoods === 0){
-                alert('Товар закончился')
+                alert.show('Товар закончился')
                 //Ошибка нехватки товара
                 return;
             }
