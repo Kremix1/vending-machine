@@ -4,8 +4,8 @@ import { useAlert } from 'react-alert';
 export const MoneyButton = (props) => {
     const alert = useAlert()
     const addMoney = () => {
-        if(props.money + props.nominal > 5000){
-            alert.show('Вы ввели 5000, это максимальная сумма, закажите что-нибудь')
+        if(props.money + props.nominal > 3000){
+            alert.show('Вы ввели 3000, это максимальная сумма, закажите что-нибудь')
             //Максимальная сумма
             return;
         }
