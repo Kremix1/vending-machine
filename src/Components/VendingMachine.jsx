@@ -66,7 +66,6 @@ export const VendingMachine = (props) => {
                     10: Math.round(Math.random() * 20), 
                     5: Math.round(Math.random() * 20), 
                     1: Math.round(Math.random() * 20)};
-    console.log(moneyNominals)
     return(
         <>
         <div className='wrapper'>
